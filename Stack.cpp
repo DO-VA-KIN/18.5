@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <functional>
 
 using namespace std;
 vector <string> Names;
@@ -39,4 +40,9 @@ string GetName(int position)
  void ClearNames()
  {
 	 Names.clear();
+ }
+
+ vector<string> GetNames()
+ {
+	 return Names;
  }

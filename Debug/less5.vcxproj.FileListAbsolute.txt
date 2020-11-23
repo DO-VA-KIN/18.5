@@ -1,2 +1,4 @@
 C:\Users\Gimn4\source\repos\less5\Debug\less5.exe
 C:\Users\Gimn4\source\repos\less5\Debug\less5.pdb
+C:\Users\Gimn4\source\repos\18.5\Debug\less5.exe
+C:\Users\Gimn4\source\repos\18.5\Debug\less5.pdb

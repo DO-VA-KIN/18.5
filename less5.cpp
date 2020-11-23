@@ -6,6 +6,7 @@
 #include "Stack.h"
 using namespace std;
 
+
 int main()
 {
     NameAdd("Sara");
@@ -20,8 +21,10 @@ int main()
     {
         cout << GetName(i) << "\n";
     }
+    vector<string> NamesVector = GetNames();
     ClearNames();
 }
+
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
