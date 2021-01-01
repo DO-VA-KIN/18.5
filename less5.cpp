@@ -17,14 +17,14 @@ public:
 		length++;
 
 		string* localNames = new string[length];
-		for (int i = 0; i < length - 2; i++)
+		for (int i = 0; i < length - 1; i++)
 		{
 			localNames[i] = Names[i];
 		}
 
 		localNames[length - 1] = newName;
+		delete[]Names;
 		Names = localNames;
-		delete[]localNames;
 	}
 
 	void NameDelete(string nameDel)
@@ -55,8 +55,8 @@ public:
 			localNames[i] = Names[i + 1];
 		}
 
+		delete[]Names;
 		Names = localNames;
-		delete[] localNames;
 	}
 
 	void ClearNames()
@@ -92,7 +92,7 @@ int main()
 
 	for (int i = 0; i < Stack1.GetLength(); i++)
 	{
-		cout << localNames[i];
+		cout << localNames[i] << "\n";
 	}
 
     Stack1.ClearNames();
