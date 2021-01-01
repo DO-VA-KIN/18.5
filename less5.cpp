@@ -9,47 +9,70 @@ using namespace std;
 class Stack
 {
 private:
-	vector <string> Names;
+	int length = 0;
+	string *Names = new string[0];
 public:
 	void NameAdd(string newName)
 	{
-		if (find(Names.begin(), Names.end(), newName) == Names.end())
-			Names.push_back(newName);
-	}
+		length++;
 
-	void NameDelete(string name)
-	{
-		auto iter = find(Names.begin(), Names.end(), name);
-		if (iter != Names.end())
+		string* localNames = new string[length];
+		for (int i = 0; i < length - 2; i++)
 		{
-			Names.erase(iter);
-			Names.shrink_to_fit();
+			localNames[i] = Names[i];
 		}
+
+		localNames[length - 1] = newName;
+		Names = localNames;
+		delete[]localNames;
 	}
 
-	string GetName(int position)
+	void NameDelete(string nameDel)
 	{
-		return Names[position];
-	}
+		int nameDelPos = -1;
 
-	int GetNamePosition(string name)
-	{
-		return distance(Names.begin(), find(Names.begin(), Names.end(), name));
-	}
+		for (int i = 0; i < length - 1; i++)
+		{
+			if(Names[i] == nameDel)
+			{
+				nameDelPos = i;
+				break;
+			}
+		}
 
-	int GetNamesSize()
-	{
-		return Names.size();
+		if (nameDelPos == -1)
+			return;
+
+		length--;
+		string* localNames = new string[length];
+
+		for (int i = 0; i < nameDelPos; i++)
+		{
+			localNames[i] = Names[i];
+		}
+		for (int i = nameDelPos; i < length; i++)
+		{
+			localNames[i] = Names[i + 1];
+		}
+
+		Names = localNames;
+		delete[] localNames;
 	}
 
 	void ClearNames()
 	{
-		Names.clear();
+		length = 0;
+		Names = new string[length];
 	}
 
-	vector<string> GetNames()
+	string* GetNames()
 	{
 		return Names;
+	}
+
+	int GetLength()
+	{
+		return length;
 	}
 };
 
@@ -65,11 +88,13 @@ int main()
     Stack1.NameDelete("st");
     Stack1.NameDelete("Johny");
 
-    for (int i = 0; i < Stack1.GetNamesSize(); i++)
-    {
-        cout << Stack1.GetName(i) << "\n";
-    }
-    vector<string> NamesVector = Stack1.GetNames();
+    string *localNames = Stack1.GetNames();
+
+	for (int i = 0; i < Stack1.GetLength(); i++)
+	{
+		cout << localNames[i];
+	}
+
     Stack1.ClearNames();
 }
 
